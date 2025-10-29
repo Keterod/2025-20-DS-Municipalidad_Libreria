@@ -1,6 +1,6 @@
 -- ===========================================================
 --  BASE DE DATOS: Biblioteca
---  Proyecto: Sistema de Gesti髇 de Bibliotecas P鷅licas
+--  Proyecto: Sistema de Gesti贸n de Bibliotecas P煤blicas
 --  Arquitectura: 4 capas (MVC)
 -- ===========================================================
 
@@ -23,8 +23,8 @@ GO
 
 -- Datos iniciales (solo dos roles)
 INSERT INTO RolesPermisos (nombre_rol, descripcion) VALUES
-('Bibliotecario', 'Gesti髇 completa del sistema (cat醠ogo, pr閟tamos, devoluciones, usuarios)'),
-('Usuario', 'Acceso al cat醠ogo, pr閟tamos y recomendaciones personalizadas');
+('Bibliotecario', 'Gesti贸n completa del sistema (cat谩logo, pr茅stamos, devoluciones, usuarios)'),
+('Usuario', 'Acceso al cat谩logo, pr茅stamos y recomendaciones personalizadas');
 GO
 
 -- ===========================================================
@@ -34,9 +34,9 @@ CREATE TABLE Usuarios (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
-    contrase馻 VARBINARY(MAX) NOT NULL,
+    contrase帽a VARBINARY(MAX) NOT NULL,
     celular VARCHAR(15) NULL,
-    DNI CHAR(8) NOT NULL UNIQUE, -- Nuevo campo DNI (8 d韌itos)
+    DNI CHAR(8) NOT NULL UNIQUE, -- Nuevo campo DNI (8 d铆gitos)
     id_rol INT NOT NULL,
     fecha_registro DATETIME DEFAULT GETDATE(),
     CONSTRAINT FK_Usuarios_Roles FOREIGN KEY (id_rol)
@@ -54,10 +54,10 @@ CREATE TABLE Libros (
     titulo VARCHAR(150) NOT NULL,
     autor VARCHAR(100) NOT NULL,
     genero VARCHAR(50) NULL,
-    a駉_publicacion SMALLINT NULL,
-    estado VARCHAR(20) DEFAULT 'Disponible' CHECK (estado IN ('Disponible', 'En pr閟tamo', 'No stock')),
+    a帽o_publicacion SMALLINT NULL,
+    estado VARCHAR(20) DEFAULT 'Disponible' CHECK (estado IN ('Disponible', 'En pr茅stamo', 'No stock')),
     fecha_registro DATETIME DEFAULT GETDATE(),
-    descripcion VARCHAR(500) NULL, -- Descripci髇 con m醲imo de 500 caracteres (~100 palabras)
+    descripcion VARCHAR(500) NULL, -- Descripci贸n con m谩ximo de 500 caracteres (~100 palabras)
     imagen_url VARCHAR(255) NULL -- Ruta o URL de la imagen
 );
 GO
@@ -123,9 +123,28 @@ CREATE TABLE Recomendaciones (
 );
 GO
 
+-- ===========================================================
+-- TABLA: Notificaciones
+-- ===========================================================
+CREATE TABLE Notificaciones (
+    id_notificacion INT IDENTITY(1,1) PRIMARY KEY,  -- Identificador 煤nico
+    id_usuario INT NOT NULL,  -- Usuario que recibe la notificaci贸n
+    id_libro INT NULL,  -- Libro relacionado con la notificaci贸n (opcional)
+    tipo VARCHAR(50) NOT NULL,  -- Tipo de notificaci贸n (por ejemplo: "Vencimiento", "Recomendaci贸n", etc.)
+    mensaje VARCHAR(250) NOT NULL,  -- Mensaje que se mostrar谩 al usuario
+    fecha_envio DATETIME DEFAULT GETDATE(),  -- Fecha en que se envi贸 la notificaci贸n
+    CONSTRAINT FK_Notif_Usuarios FOREIGN KEY (id_usuario)
+        REFERENCES Usuarios(id_usuario)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,  -- Si se borra el usuario, se eliminan sus notificaciones
+    CONSTRAINT FK_Notif_Libros FOREIGN KEY (id_libro)
+        REFERENCES Libros(id_libro)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL  -- Si se borra un libro, la notificaci贸n permanece pero sin ID de libro
+);
+GO
+
 -- =============================================
-
-
 
 
 
