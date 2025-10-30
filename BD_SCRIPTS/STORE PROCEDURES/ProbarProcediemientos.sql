@@ -96,5 +96,10 @@ EXEC VerPrestamosPorUsuario
     @id_usuario = 1;
 GO
 
+-- llamada al procedimento para mostrar todos los libros prestados
+    
+EXEC VerTodosLosPrestamos;
+GO
+
 
 
