@@ -101,5 +101,9 @@ GO
 EXEC VerTodosLosPrestamos;
 GO
 
+-- llamada al procedimento para devolver un libro
+EXEC RegistrarDevolucion 
+    @id_prestamo = 1;
+GO
 
 
