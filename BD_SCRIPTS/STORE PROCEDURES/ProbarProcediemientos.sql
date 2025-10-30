@@ -4,7 +4,7 @@ EXEC AgregarLibro
     @autor = 'Juan Pérez',
     @genero = 'Ficción',
     @año_publicacion = 2021,
-    @estado = 'Disponible',
+    @estado_L = 'Disponible',
     @descripcion = 'Este es un gran libro que narra una historia épica.',
     @imagen_url = '/imagenes/libros/libro_123.jpg';  -- Ruta de la imagen
 
@@ -13,7 +13,7 @@ EXEC AgregarLibro
     @autor = 'Ana Martínez',  -- Autor
     @genero = 'Autoayuda',  -- Género
     @año_publicacion = 2023,  -- Año de publicación
-    @estado = 'Disponible',  -- Estado
+    @estado_L = 'Disponible',  -- Estado
     @descripcion = 'Un libro lleno de estrategias y consejos para alcanzar el éxito en la vida personal y profesional.',  -- Descripción
     @imagen_url = '/imagenes/libros/libro_124.jpg';  -- Ruta de la imagen
 
@@ -24,7 +24,7 @@ EXEC AgregarLibro
     @autor = 'David Gómez',  -- Autor
     @genero = 'Biografía',  -- Género
     @año_publicacion = 2022,  -- Año de publicación
-    @estado = 'Disponible',  -- Estado
+    @estado_L = 'Disponible',  -- Estado
     @descripcion = 'Una biografía que narra la increíble vida de una persona que superó grandes obstáculos para lograr sus sueños.',  -- Descripción
     @imagen_url = '/imagenes/libros/libro_125.jpg';  -- Ruta de la imagen
 
@@ -51,7 +51,7 @@ EXEC EditarLibro
     @autor = 'Carlos Sánchez',  -- Nuevo autor
     @genero = 'Misterio',  -- Nuevo género
     @año_publicacion = 2021,  -- Mantener el valor original (sin cambio)
-    @estado = 'Disponible',  -- Mantener el valor original (sin cambio)
+    @estado_L = 'Disponible',  -- Mantener el valor original (sin cambio)
     @descripcion = 'Este es un gran libro que narra una historia épica.',  -- Mantener el valor original (sin cambio)
     @imagen_url = '/imagenes/libros/libro_123.jpg';  -- Mantener el valor original (sin cambio)
 
@@ -68,4 +68,33 @@ EXEC IniciarSesion
     @correo = 'juan.perez@example.com',
     @contraseña = 0x1234567890ABCDEF;
 GO
+
+--llamada al procedimiento para que de toda la info de un libro
+
+EXEC ConsultarLibroPorID 
+    @id_libro = 2;
+GO
+
+--llamada al procedimiento para que muestre la previsualizacion del prestamo
+EXEC PrevisualizarPrestamo 
+    @id_usuario = 1,
+    @id_libro = 2;
+GO
+
+
+-- llamada al procedimiento para hacer el prestamo de libro
+
+EXEC RegistrarPrestamo 
+    @id_usuario = 1,
+    @id_libro = 2;
+GO
+
+
+-- llamada al procedimento para mostrar todos los libros prestado por usuario
+
+EXEC VerPrestamosPorUsuario 
+    @id_usuario = 1;
+GO
+
+
 
