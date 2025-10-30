@@ -1,31 +1,31 @@
 -- Llamada al procedimiento para agregar un libro
 EXEC AgregarLibro 
     @titulo = 'El Gran Libro',
-    @autor = 'Juan PÈrez',
-    @genero = 'FicciÛn',
-    @aÒo_publicacion = 2021,
+    @autor = 'Juan P√©rez',
+    @genero = 'Ficci√≥n',
+    @a√±o_publicacion = 2021,
     @estado = 'Disponible',
-    @descripcion = 'Este es un gran libro que narra una historia Èpica.',
+    @descripcion = 'Este es un gran libro que narra una historia √©pica.',
     @imagen_url = '/imagenes/libros/libro_123.jpg';  -- Ruta de la imagen
 
 EXEC AgregarLibro 
-    @titulo = 'El libro para triunfar',  -- Nuevo tÌtulo
-    @autor = 'Ana MartÌnez',  -- Autor
-    @genero = 'Autoayuda',  -- GÈnero
-    @aÒo_publicacion = 2023,  -- AÒo de publicaciÛn
+    @titulo = 'El libro para triunfar',  -- Nuevo t√≠tulo
+    @autor = 'Ana Mart√≠nez',  -- Autor
+    @genero = 'Autoayuda',  -- G√©nero
+    @a√±o_publicacion = 2023,  -- A√±o de publicaci√≥n
     @estado = 'Disponible',  -- Estado
-    @descripcion = 'Un libro lleno de estrategias y consejos para alcanzar el Èxito en la vida personal y profesional.',  -- DescripciÛn
+    @descripcion = 'Un libro lleno de estrategias y consejos para alcanzar el √©xito en la vida personal y profesional.',  -- Descripci√≥n
     @imagen_url = '/imagenes/libros/libro_124.jpg';  -- Ruta de la imagen
 
 
 
 EXEC AgregarLibro 
-    @titulo = 'La maravillosa vida',  -- Nuevo tÌtulo
-    @autor = 'David GÛmez',  -- Autor
-    @genero = 'BiografÌa',  -- GÈnero
-    @aÒo_publicacion = 2022,  -- AÒo de publicaciÛn
+    @titulo = 'La maravillosa vida',  -- Nuevo t√≠tulo
+    @autor = 'David G√≥mez',  -- Autor
+    @genero = 'Biograf√≠a',  -- G√©nero
+    @a√±o_publicacion = 2022,  -- A√±o de publicaci√≥n
     @estado = 'Disponible',  -- Estado
-    @descripcion = 'Una biografÌa que narra la increÌble vida de una persona que superÛ grandes obst·culos para lograr sus sueÒos.',  -- DescripciÛn
+    @descripcion = 'Una biograf√≠a que narra la incre√≠ble vida de una persona que super√≥ grandes obst√°culos para lograr sus sue√±os.',  -- Descripci√≥n
     @imagen_url = '/imagenes/libros/libro_125.jpg';  -- Ruta de la imagen
 
 
@@ -35,9 +35,9 @@ EXEC AgregarLibro
 
 -- Llamada al procedimiento para registrar un usuario
 EXEC RegistrarUsuario 
-    @nombre = 'Juan PÈrez', 
+    @nombre = 'Juan P√©rez', 
     @correo = 'juan.perez@example.com', 
-    @contraseÒa = 0x1234567890ABCDEF,  -- Ejemplo de contraseÒa cifrada (en VARBINARY)
+    @contrase√±a = 0x1234567890ABCDEF,  -- Ejemplo de contrase√±a cifrada (en VARBINARY)
     @celular = '987654321', 
     @DNI = '12345678', 
     @id_rol = 2; -- 2 para Usuario
@@ -47,16 +47,25 @@ EXEC RegistrarUsuario
 -- Llamada al procedimiento para editar el libro con ID 1
 EXEC EditarLibro 
     @id_libro = 1, 
-    @titulo = 'El Gran Libro Editado',  -- Nuevo tÌtulo
-    @autor = 'Carlos S·nchez',  -- Nuevo autor
-    @genero = 'Misterio',  -- Nuevo gÈnero
-    @aÒo_publicacion = 2021,  -- Mantener el valor original (sin cambio)
+    @titulo = 'El Gran Libro Editado',  -- Nuevo t√≠tulo
+    @autor = 'Carlos S√°nchez',  -- Nuevo autor
+    @genero = 'Misterio',  -- Nuevo g√©nero
+    @a√±o_publicacion = 2021,  -- Mantener el valor original (sin cambio)
     @estado = 'Disponible',  -- Mantener el valor original (sin cambio)
-    @descripcion = 'Este es un gran libro que narra una historia Èpica.',  -- Mantener el valor original (sin cambio)
+    @descripcion = 'Este es un gran libro que narra una historia √©pica.',  -- Mantener el valor original (sin cambio)
     @imagen_url = '/imagenes/libros/libro_123.jpg';  -- Mantener el valor original (sin cambio)
 
 
 
--- Llamada al procedimiento para buscar libros cuyo tÌtulo contiene la palabra 'libro'
+-- Llamada al procedimiento para buscar libros cuyo t√≠tulo contiene la palabra 'libro'
 EXEC BuscarLibroPorTitulo 
+
     @parte_titulo = 'libro';
+
+
+--llamada al procedimiento para evaluar inicair sesion
+EXEC IniciarSesion 
+    @correo = 'juan.perez@example.com',
+    @contrase√±a = 0x1234567890ABCDEF;
+GO
+
