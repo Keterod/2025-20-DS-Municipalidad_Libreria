@@ -5,14 +5,14 @@ CREATE PROCEDURE EditarLibro
     @id_libro INT,  -- ID del libro a editar
     @titulo VARCHAR(150),
     @autor VARCHAR(100),
-    @genero VARCHAR(50) = NULL,  -- G閚ero es opcional
-    @a駉_publicacion SMALLINT = NULL,  -- A駉 de publicaci髇 es opcional
-    @estado VARCHAR(20) = 'Disponible',  -- Estado por defecto
-    @descripcion VARCHAR(500) = NULL,  -- Descripci髇 es opcional
+    @genero VARCHAR(50) = NULL,  -- G茅nero es opcional
+    @a帽o_publicacion SMALLINT = NULL,  -- A帽o de publicaci贸n es opcional
+    @estado_L VARCHAR(20) = 'Disponible',  -- Estado por defecto
+    @descripcion VARCHAR(500) = NULL,  -- Descripci贸n es opcional
     @imagen_url VARCHAR(255) = NULL  -- Ruta de la imagen
 AS
 BEGIN
-    -- Comenzar la transacci髇 para asegurar la integridad de los datos
+    -- Comenzar la transacci贸n para asegurar la integridad de los datos
     BEGIN TRY
         BEGIN TRANSACTION
         
@@ -22,25 +22,26 @@ BEGIN
             titulo = @titulo,
             autor = @autor,
             genero = @genero,
-            a駉_publicacion = @a駉_publicacion,
-            estado = @estado,
+            a帽o_publicacion = @a帽o_publicacion,
+            estado_L = ISNULL(@estado_L, estado_L),
             descripcion = @descripcion,
             imagen_url = @imagen_url
         WHERE id_libro = @id_libro;
         
-        -- Confirmar la transacci髇
+        -- Confirmar la transacci贸n
         COMMIT;
         
         PRINT 'Libro actualizado exitosamente.';
     END TRY
     BEGIN CATCH
-        -- Si ocurre un error, hacer rollback de la transacci髇
+        -- Si ocurre un error, hacer rollback de la transacci贸n
         ROLLBACK;
         
         PRINT 'Error al actualizar el libro: ' + ERROR_MESSAGE();
     END CATCH
 END
 GO
+
 
 
 
