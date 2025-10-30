@@ -55,7 +55,7 @@ CREATE TABLE Libros (
     autor VARCHAR(100) NOT NULL,
     genero VARCHAR(50) NULL,
     año_publicacion SMALLINT NULL,
-    estado VARCHAR(20) DEFAULT 'Disponible' CHECK (estado IN ('Disponible', 'En préstamo', 'No stock')),
+    estado_L VARCHAR(20) DEFAULT 'Disponible' CHECK (estado_L IN ('Disponible', 'En préstamo', 'No stock')),
     fecha_registro DATETIME DEFAULT GETDATE(),
     descripcion VARCHAR(500) NULL, -- Descripción con máximo de 500 caracteres (~100 palabras)
     imagen_url VARCHAR(255) NULL -- Ruta o URL de la imagen
@@ -72,7 +72,7 @@ CREATE TABLE Prestamos (
     fecha_prestamo DATETIME DEFAULT GETDATE(),
     fecha_vencimiento DATETIME NOT NULL,
     fecha_devolucion DATETIME NULL,
-    estado VARCHAR(20) DEFAULT 'Prestado' CHECK (estado IN ('Prestado', 'Devuelto', 'Vencido')),
+    estado_P VARCHAR(20) DEFAULT 'Prestado' CHECK (estado_P IN ('Prestado', 'Devuelto', 'Vencido')),
     CONSTRAINT FK_Prestamos_Usuarios FOREIGN KEY (id_usuario)
         REFERENCES Usuarios(id_usuario)
         ON UPDATE CASCADE
@@ -145,6 +145,7 @@ CREATE TABLE Notificaciones (
 GO
 
 -- =============================================
+
 
 
 
