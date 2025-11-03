@@ -58,7 +58,7 @@ CREATE TABLE Libros (
     estado_L VARCHAR(20) DEFAULT 'Disponible' CHECK (estado_L IN ('Disponible', 'En préstamo', 'No stock')),
     fecha_registro DATETIME DEFAULT GETDATE(),
     descripcion VARCHAR(500) NULL, -- Descripción con máximo de 500 caracteres (~100 palabras)
-    imagen_url VARCHAR(255) NULL -- Ruta o URL de la imagen
+    imagen VARBINARY(MAX) NULL -- Ruta o URL de la imagen
 );
 GO
 
@@ -145,6 +145,7 @@ CREATE TABLE Notificaciones (
 GO
 
 -- =============================================
+
 
 
 
