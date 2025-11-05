@@ -11,10 +11,10 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- 1 Verificar si el libro est· disponible
+        -- 1 Verificar si el libro est√° disponible
         IF NOT EXISTS (SELECT 1 FROM Libros WHERE id_libro = @id_libro AND estado_L = 'Disponible')
         BEGIN
-            PRINT ' El libro no est· disponible para prÈstamo.';
+            PRINT ' El libro no est√° disponible para pr√©stamo.';
             ROLLBACK;
             RETURN;
         END;
@@ -23,23 +23,23 @@ BEGIN
         DECLARE @fecha_prestamo DATETIME = GETDATE();
         DECLARE @fecha_vencimiento DATETIME = DATEADD(DAY, 7, GETDATE());
 
-        -- 3 Registrar el prÈstamo en la tabla Prestamos
+        -- 3 Registrar el pr√©stamo en la tabla Prestamos
         INSERT INTO Prestamos (id_usuario, id_libro, fecha_prestamo, fecha_vencimiento,  estado_P)
         VALUES (@id_usuario, @id_libro, @fecha_prestamo, @fecha_vencimiento, 'Prestado');
 
-        -- 4 Actualizar el estado del libro a "En prÈstamo"
+        -- 4 Actualizar el estado del libro a "En pr√©stamo"
         UPDATE Libros
-        SET estado_L = 'En prÈstamo'
+        SET estado_L = 'En pr√©stamo'
         WHERE id_libro = @id_libro;
 
         -- 5 Registrar el libro en el historial de lectura
         INSERT INTO HistorialLectura (id_usuario, id_libro, fecha_lectura)
         VALUES (@id_usuario, @id_libro, @fecha_prestamo);
 
-        -- 6 Mostrar la confirmaciÛn con datos relevantes
+        -- 6 Mostrar la confirmaci√≥n con datos relevantes
         SELECT 
             L.titulo,
-            L.imagen_url,
+            L.imagen,
             U.nombre AS nombre_solicitante,
             @fecha_prestamo AS fecha_solicitud,
             @fecha_vencimiento AS fecha_devolucion
@@ -47,15 +47,16 @@ BEGIN
         INNER JOIN Usuarios U ON U.id_usuario = @id_usuario
         WHERE L.id_libro = @id_libro;
 
-        -- 7 Confirmar la transacciÛn
+        -- 7 Confirmar la transacci√≥n
         COMMIT;
-        PRINT 'PrÈstamo registrado correctamente.';
+        PRINT 'Pr√©stamo registrado correctamente.';
     END TRY
 
     BEGIN CATCH
         -- Si algo falla, revertimos todo
         ROLLBACK;
-        PRINT 'Error al registrar el prÈstamo: ' + ERROR_MESSAGE();
+        PRINT 'Error al registrar el pr√©stamo: ' + ERROR_MESSAGE();
     END CATCH
 END;
 GO
+
