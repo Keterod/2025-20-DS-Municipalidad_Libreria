@@ -15,7 +15,7 @@ BEGIN
     -- Mostrar los datos al usuario sin guardar nada
     SELECT 
         L.titulo,
-        L.imagen_url,
+        L.imagen,
         U.nombre AS nombre_solicitante,
         @fecha_solicitud AS fecha_solicitud,
         @fecha_devolucion AS fecha_devolucion
@@ -26,3 +26,4 @@ BEGIN
     PRINT 'Consulta previa realizada correctamente.';
 END;
 GO
+
