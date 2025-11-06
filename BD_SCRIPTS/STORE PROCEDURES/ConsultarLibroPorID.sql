@@ -14,10 +14,10 @@ BEGIN
             titulo,
             autor,
             genero,
-            año_publicacion,
+            aÃ±o_publicacion,
             estado_L,
             descripcion,
-            imagen_url
+            imagen
         FROM Libros
         WHERE id_libro = @id_libro;
 
@@ -29,4 +29,5 @@ BEGIN
     END CATCH
 END;
 GO
+
 
