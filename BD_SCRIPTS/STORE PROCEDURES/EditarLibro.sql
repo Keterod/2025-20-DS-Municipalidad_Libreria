@@ -9,7 +9,7 @@ CREATE PROCEDURE EditarLibro
     @año_publicacion SMALLINT = NULL,  -- Año de publicación es opcional
     @estado_L VARCHAR(20) = 'Disponible',  -- Estado por defecto
     @descripcion VARCHAR(500) = NULL,  -- Descripción es opcional
-    @imagen_url VARCHAR(255) = NULL  -- Ruta de la imagen
+    @imagen VARCHAR(255) = NULL  -- Ruta de la imagen
 AS
 BEGIN
     -- Comenzar la transacción para asegurar la integridad de los datos
@@ -25,7 +25,7 @@ BEGIN
             año_publicacion = @año_publicacion,
             estado_L = ISNULL(@estado_L, estado_L),
             descripcion = @descripcion,
-            imagen_url = @imagen_url
+            imagen = @imagen
         WHERE id_libro = @id_libro;
         
         -- Confirmar la transacción
@@ -41,6 +41,7 @@ BEGIN
     END CATCH
 END
 GO
+
 
 
 
