@@ -9,7 +9,7 @@ CREATE PROCEDURE EditarLibro
     @año_publicacion SMALLINT = NULL,  -- Año de publicación es opcional
     @estado_L VARCHAR(20) = 'Disponible',  -- Estado por defecto
     @descripcion VARCHAR(500) = NULL,  -- Descripción es opcional
-    @imagen VARCHAR(255) = NULL  -- Ruta de la imagen
+    @imagen VARBINARY(MAX) = NULL  -- Ruta de la imagen
 AS
 BEGIN
     -- Comenzar la transacción para asegurar la integridad de los datos
@@ -41,6 +41,7 @@ BEGIN
     END CATCH
 END
 GO
+
 
 
 
