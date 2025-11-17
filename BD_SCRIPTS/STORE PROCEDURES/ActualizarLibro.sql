@@ -1,7 +1,7 @@
 -- ===========================================================
 --  PROCEDIMIENTO ALMACENADO: EditarLibro
 -- ===========================================================
-CREATE PROCEDURE EditarLibro
+CREATE PROCEDURE ActualizarLibro
     @id_libro INT,  -- ID del libro a editar
     @titulo VARCHAR(150),
     @autor VARCHAR(100),
@@ -41,6 +41,7 @@ BEGIN
     END CATCH
 END
 GO
+
 
 
 
