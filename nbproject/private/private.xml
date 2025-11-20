@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/BibliotecaPública.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>145</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/View/panelTodosPrestamos.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/Model/Prestamo.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/Model/PrestamoDAO.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/Controller/PrestamoController.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/View/VentanaGestionPrestamo.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/View/MenuPrincipal.java</file>
+            <file>file:/C:/Users/Diego/Desktop/Java%20NetBeans/Biblioteca%20Pública/BibliotecaPública/src/View/PrevisualizarPrestamo.java</file>
+        </group>
+    </open-files>
+</project-private>
